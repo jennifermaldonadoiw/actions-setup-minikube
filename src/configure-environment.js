@@ -22,8 +22,8 @@ const waitForDocker = async (attempt = 0) => {
 
 const configureEnvironment = async (inputs = {}) => {
   core.info('Updating Environment configuration to support Minikube');
-  logExecSync('sudo apt-get update');
-  logExecSync('sudo apt-get install -y conntrack');
+  // logExecSync('sudo apt-get update');
+  // logExecSync('sudo apt-get install -y conntrack');
   if (inputs.driver === 'docker') {
     core.info('Waiting for Docker to be ready');
     await waitForDocker();
