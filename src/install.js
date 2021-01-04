@@ -21,11 +21,6 @@ const install = async (minikube, inputs) => {
 	// #await io.mv(minikube, path.join(minikubeDirectory, 'minikube'));
 	// #core.exportVariable('MINIKUBE_HOME', minikubeDirectory);
 	// #core.addPath(minikubeDirectory);
-	// #logExecSync(
-//		#`${sudo(inputs)} ${minikubeDirectory}/minikube start --vm-driver=${driver(
-//			#inputs
-//			#)} --kubernetes-version ${inputs.kubernetesVersion} ${inputs.startArgs}`
-//		#);
 //	#logExecSync(`sudo chown -R $USER $HOME/.kube ${minikubeDirectory}/.minikube`);
 //	#logExecSync(
 //		#`sudo chmod -R a+r /home/runner/.kube ${minikubeDirectory}/.minikube`
@@ -34,6 +29,9 @@ const install = async (minikube, inputs) => {
     .toString()
     .replace(/[\n\r]/g, '');
   core.info(`${minikubeVersion} installed successfully`);
+  core.info('Executing Minikube');
+  //logExecSync( `${sudo(inputs)} ${minikubeDirectory}/minikube start --vm-driver=${driver( inputs)} --kubernetes-version ${inputs.kubernetesVersion} ${inputs.startArgs}`);
+  logExecSync( `minikube start`);
 };
 
 module.exports = install;
