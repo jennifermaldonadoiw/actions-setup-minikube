@@ -15,16 +15,17 @@ const download = async inputs => {
   if (inputs.githubToken) {
     headers.Authorization = `token ${inputs.githubToken}`;
   }
-  const tagInfo = await axios({
-    method: 'GET',
-    url: tagInfoUrl,
-    headers
-  });
-  const downloadUrl = tagInfo.data.assets.find(
-    asset => isLinux(asset.name) && isAmd64(asset.name) && !isSignature(asset.name)
-  ).browser_download_url;
+  //const tagInfo = await axios({
+  //  method: 'GET',
+  //  url: tagInfoUrl,
+  //  headers
+  //});
+  //const downloadUrl = tagInfo.data.assets.find(
+  //  asset => isLinux(asset.name) && isAmd64(asset.name) && !isSignature(asset.name)
+  //).browser_download_url;
   core.info(`Minikube version found at: ${downloadUrl}`);
-  return tc.downloadTool(downloadUrl);
+  //return tc.downloadTool(downloadUrl);
+  return true;
 };
 
 module.exports = download;
