@@ -28,10 +28,15 @@ const install = async (minikube, inputs) => {
   const minikubeVersion = execSync(`minikube version`)
     .toString()
     .replace(/[\n\r]/g, '');
+  core.info('--------------------------------------------------------------------');
   core.info(`${minikubeVersion} installed successfully`);
+  core.info('--------------------------------------------------------------------');
   core.info('Executing Minikube');
   //logExecSync( `${sudo(inputs)} ${minikubeDirectory}/minikube start --vm-driver=${driver( inputs)} --kubernetes-version ${inputs.kubernetesVersion} ${inputs.startArgs}`);
   logExecSync( `minikube start`);
+  core.info('--------------------------------------------------------------------');
+  core.info('Helm update');
+  logExecSync( `helm repo update`);
 };
 
 module.exports = install;
