@@ -23,7 +23,7 @@ const download = async inputs => {
   //const downloadUrl = tagInfo.data.assets.find(
   //  asset => isLinux(asset.name) && isAmd64(asset.name) && !isSignature(asset.name)
   //).browser_download_url;
-  core.info(`Minikube version found at: ${downloadUrl}`);
+  //core.info(`Minikube version found at: ${downloadUrl}`);
   //return tc.downloadTool(downloadUrl);
   return true;
 };
