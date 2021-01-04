@@ -15,21 +15,21 @@ const sudo = inputs => {
 };
 
 const install = async (minikube, inputs) => {
-  core.info('Installing Minikube');
-  logExecSync(`chmod +x ${minikube}`);
-  const minikubeDirectory = path.dirname(minikube);
-  await io.mv(minikube, path.join(minikubeDirectory, 'minikube'));
-  core.exportVariable('MINIKUBE_HOME', minikubeDirectory);
-  core.addPath(minikubeDirectory);
-  logExecSync(
-    `${sudo(inputs)} ${minikubeDirectory}/minikube start --vm-driver=${driver(
-      inputs
-    )} --kubernetes-version ${inputs.kubernetesVersion} ${inputs.startArgs}`
-  );
-  logExecSync(`sudo chown -R $USER $HOME/.kube ${minikubeDirectory}/.minikube`);
-  logExecSync(
-    `sudo chmod -R a+r /home/runner/.kube ${minikubeDirectory}/.minikube`
-  );
+    core.info('Executing Minikube');
+	#logExecSync(`chmod +x ${minikube}`);
+	#const minikubeDirectory = path.dirname(minikube);
+	#await io.mv(minikube, path.join(minikubeDirectory, 'minikube'));
+	#core.exportVariable('MINIKUBE_HOME', minikubeDirectory);
+	#core.addPath(minikubeDirectory);
+	#logExecSync(
+		#`${sudo(inputs)} ${minikubeDirectory}/minikube start --vm-driver=${driver(
+			#inputs
+			#)} --kubernetes-version ${inputs.kubernetesVersion} ${inputs.startArgs}`
+		#);
+	#logExecSync(`sudo chown -R $USER $HOME/.kube ${minikubeDirectory}/.minikube`);
+	#logExecSync(
+		#`sudo chmod -R a+r /home/runner/.kube ${minikubeDirectory}/.minikube`
+		#);
   const minikubeVersion = execSync(`minikube version`)
     .toString()
     .replace(/[\n\r]/g, '');
